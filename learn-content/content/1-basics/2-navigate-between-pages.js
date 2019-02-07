@@ -120,69 +120,69 @@ You don't need to write even a single line of client-side routing code.
 
 Simply link pages; it just works!
     `
-  },
+    },
 
-  {
-    id: 'styling-a-link',
-    type: 'mcq',
-    points: 15,
-    answers: [
-      'It applied the style correctly as expected.',
-      'It didn\'t do anything to the link\'s style.',
-      'It applied the style after a full page reload.',
-      'It applied the style, but with a warning in the console.'
-    ],
-    correctAnswer: 'It didn\'t do anything to the link\'s style.',
-    text: `
-## Styling a Link
+    {
+      id: 'adding-link-props',
+      type: 'mcq',
+      points: 15,
+      answers: [
+        'It applied the title attribute correctly to the anchor tag as expected.',
+        'It didn\'t do anything to the link\'s title attribute.',
+        'It applied the title to the link after a full page reload.',
+        'It applied the title, but with a warning in the console.'
+      ],
+      correctAnswer: 'It didn\'t do anything to the link\'s title attribute.',
+      text: `
+## Adding Link Props
 
-Most of the time, we may want to style our links. This is how we can do it:
+You may need to add attributes or props to your links for a number of reasons. Perhaps you need to add a \`title\` attribute to the link. We can add it like this:
 
 ~~~js
 <Link href="/about">
-  <a style={{ fontSize: 20 }}>About Page</a>
+  <a title="About Page">About Page</a>
 </Link>
 ~~~
 
-Once we add this, you can see the style applied correctly.
+Once we add this, you can see that the rendered anchor tag gets the \`title\` attribute "About Page" added on to it.
 
 How about doing this instead?
 
 ~~~js
-<Link href="/about" style={{ fontSize: 20 }}>
+<Link href="/about" title="About Page">
   <a>About Page</a>
 </Link>
 ~~~
 
 What has happened with the above code change?
     `
-  },
+    },
 
-  {
-    id: 'hoc',
-    type: 'text',
-    points: 5,
-    text: `
+    {
+      id: 'hoc',
+      type: 'text',
+      points: 5,
+      text: `
 ## Link is Just a Higher Order Component (HOC)
 
-Actually, the style prop on \`next/link\` has no effect. That's because \`next/link\` is just a [higher order component](https://facebook.github.io/react/docs/higher-order-components.html) which only accepts the "href" and some similar props. If you need to style it, you need to do it to the underlying component.
+Actually, the title prop on \`next/link\` component has no effect. That's because \`next/link\` is just a [higher order component](https://facebook.github.io/react/docs/higher-order-components.html) which only accepts the "href" and some similar props. If you need to add props to it, you need to do it to the underlying component. Do not expect the \`next/link\` component to pass those props to it's children.
 
-In this case, it's our anchor.
+In this case, the child of the \`next/link\` component is the anchor tag.
     `
-  },
+    },
 
-  {
-    id: 'link-with-a-button',
-    type: 'mcq',
-    points: 20,
-    answers: [
-      'It does nothing.',
-      'It throws an error saying "button is not allowed inside link".',
-      'It reloads the page.',
-      'It navigates the page to the about page.'
-    ],
-    correctAnswer: 'It navigates the page to the about page.',
-    text: `
+    {
+      id: 'link-with-a-button',
+      type: 'mcq',
+      points: 20,
+      answers: [
+        'It does nothing.',
+        'It throws an error saying "button is not allowed inside link".',
+        'It reloads the page.',
+        'It navigates the page to the about page.'
+      ],
+      correctAnswer: 'It navigates the page to the about page.',
+      text: `
 ## Link With a Button
 
 Let's say that we need to use a "button" instead of an anchor for our link. Then we need to edit our navigation code like this:
@@ -195,32 +195,32 @@ Let's say that we need to use a "button" instead of an anchor for our link. Then
 
 What will happen when you click the button on the index page?
     `
-  },
+    },
 
-  {
-    id: 'works-with-anything',
-    points: 5,
-    type: 'text',
-    text: `
+    {
+      id: 'works-with-anything',
+      points: 5,
+      type: 'text',
+      text: `
 ## Link Works With Anything
 
 Just like a button, you can place any of your custom React components or even a \`div\` within a Link.
 
 The only requirement for components placed inside a Link is they should accept an \`onClick\` prop.
     `
-  },
+    },
 
-  {
-    id: 'simple-but-powerful',
-    points: 5,
-    type: 'text',
-    text: `
+    {
+      id: 'simple-but-powerful',
+      points: 5,
+      type: 'text',
+      text: `
 ## Link is Simple, but Powerful
 
 Here we've only looked at the very basic usage of \`next/link\`. There are some interesting ways to use it, and we'll learn about them in upcoming lessons.
 
 In the meantime, have a look at the [Next.js Routing documentation](https://github.com/zeit/next.js#routing). You'll find it useful.
     `
-  }
+    }
   ]
 }
