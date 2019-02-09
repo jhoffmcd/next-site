@@ -2,7 +2,7 @@ import Head from 'next/head'
 
 export default ({ children, ...props }) => (
   <Head>
-    <title>{`${props.title} - Next.js Documentation`}</title>
+    <title>{`Documentation - ${props.title} | Next.js`}</title>
     <meta
       name="twitter:card"
       content={props.image ? 'summary_large_image' : 'summary'}
@@ -18,8 +18,8 @@ export default ({ children, ...props }) => (
     {props.ogDescription ? (
       <meta name="og:description" content={props.ogDescription} />
     ) : (
-      <meta name="og:description" content={props.description} />
-    )}
+        <meta name="og:description" content={props.description} />
+      )}
     {props.video
       ? [
         <meta name="og:type" content="video" key="0" />,
@@ -28,6 +28,6 @@ export default ({ children, ...props }) => (
       ]
       : null}
 
-    { children }
+    {children}
   </Head>
 )

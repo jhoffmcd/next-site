@@ -1,18 +1,17 @@
 import Document, { Head, Main, NextScript } from 'next/document'
 
-import {GA_TRACKING_ID} from '../lib/analytics'
+import { GA_TRACKING_ID } from '../lib/analytics'
 
 export default class MyDocument extends Document {
-  render () {
+  render() {
     return (
       <html lang="en">
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <title>Learn Next.js</title>
           <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
           <meta name="description" content="Next.js is a lightweight framework for static and server-rendered applications" />
           <meta name="twitter:site" content="@zeithq" />
-          <meta name="og:title" content='Learn Next.js' />
+          <meta name="og:title" content='Learn | Next.js' />
           <meta name="og:url" content='https://nextjs.org/learn' />
           <meta name="og:description" content='Next.js is a lightweight framework for static and server-rendered applications' />
           <meta name="twitter:card" content="summary_large_image" />
@@ -32,19 +31,19 @@ export default class MyDocument extends Document {
           <Main />
           <NextScript />
           <script
-              async
-              src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
-            />
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
                   window.dataLayer = window.dataLayer || [];
                   function gtag(){dataLayer.push(arguments);}
                   gtag('js', new Date());
                   gtag('config', '${GA_TRACKING_ID}');
                 `
-              }}
-            />
+            }}
+          />
         </body>
       </html>
     )

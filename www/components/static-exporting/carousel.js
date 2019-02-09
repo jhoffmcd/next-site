@@ -58,12 +58,11 @@ export default class Carousel extends React.PureComponent {
   render() {
     const { pivot } = this;
     const { index } = this.state;
-    const children = React.Children.toArray(this.props.children);
 
     let newChildren = [];
-    for (let i = 0; i < this.count; i++) {
-      newChildren.push(children[(index + i) % this.count]);
-    }
+    React.Children.forEach(this.props.children, (_, i) => {
+      newChildren.push(this.props.children[(index + i) % this.count]);
+    });
 
     return (
       <div className="carousel">
@@ -71,6 +70,7 @@ export default class Carousel extends React.PureComponent {
           <PoseGroup animateOnMount={false}>
             {newChildren.map((child, i) => (
               <Item
+                style={{ visibility: i < pivot - 1 || i > pivot + 1 ? 'hidden' : 'visible' }}
                 pose={i === pivot ? 'selected' : 'unselected'}
                 key={child.props.children[0].props.href}
               >

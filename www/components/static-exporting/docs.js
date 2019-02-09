@@ -48,14 +48,6 @@ export default () => (
           line-height: 1.3;
         }
 
-        .switching-img {
-          user-select: none;
-          user-drag: none;
-          width: 500px;
-          height: 300px;
-          background-color: red;
-        }
-
         .content {
           margin: 1rem 0 1.5rem;
           max-width: 25rem;

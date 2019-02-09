@@ -24,7 +24,6 @@
     "polished": "^2.0.3",
     "prop-types": "^15.5.10",
     "react": "^16.7.0",
-    "react-disqus-comments": "^1.2.0",
     "react-dom": "^16.7.0",
     "react-highlight": "^0.12.0",
     "react-spring": "^5.7.2",

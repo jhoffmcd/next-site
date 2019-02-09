@@ -21,10 +21,10 @@ function Showcase({ router }) {
   const { item, from } = router.query;
 
   return (
-    <Page title="Next.js - Showcase">
+    <Page title="Showcase | Next.js">
       <SocialMeta
         image={'/static/twitter-cards/showcase.png'}
-        title="Next.js - Showcase"
+        title="Showcase | Next.js"
         url="https://nextjs.org/showcase"
         description="Meet hundreds of beautiful websites powered by Next.js"
       />

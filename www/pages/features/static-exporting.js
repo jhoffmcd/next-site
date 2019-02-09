@@ -19,7 +19,7 @@ import Customers from '../../components/static-exporting/customers';
 export default () => (
   <Page>
     <Head>
-      <title>Static Exporting - Next.js Features</title>
+      <title>Features - Static Exporting | Next.js</title>
       <meta
         name="description"
         content="Leverage the speed and simplicity of static sites with the full power of Next.js"
@@ -30,7 +30,7 @@ export default () => (
       />
     </Head>
     <SocialMeta
-      title="Static Exporting - Next.js Features"
+      title="Features - Static Exporting | Next.js"
       description="Leverage the speed and simplicity of static sites with the full power of Next.js"
       image="/static/twitter-cards/static-exporting.png"
       url="https://nexts.org/features/static-exporting"
@@ -51,5 +51,15 @@ export default () => (
     <Docs />
     <Customers />
     <Footer />
+    <style jsx>
+      {`
+        :global(html) {
+          scroll-behavior: smooth;
+        }
+        :global(body) {
+          scroll-behavior: unset;
+        }
+      `}
+    </style>
   </Page>
 );

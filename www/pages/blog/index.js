@@ -44,7 +44,7 @@ const items = previewItems
   });
 
 export default () => (
-  <Page title="Next.js - Blog">
+  <Page title="Blog | Next.js">
     <MediaQueryConsumer>
       {({ isMobile }) => (
         <Header height={64 + (isMobile ? 32 : 0)} shadow defaultActive>

@@ -35,7 +35,7 @@ const Lesson = class extends React.Component {
     return (
       <div className='lesson-area'>
         <Head>
-          <title>{lesson.name} - {SITE_NAME}</title>
+          <title>Learn - {lesson.name} | {SITE_NAME}</title>
         </Head>
         <h2 className='f1'>{lesson.name}</h2>
         <StepBar steps={lesson.steps || []} courseId={courseId} lessonId={lessonId} currentStepId={stepId} />

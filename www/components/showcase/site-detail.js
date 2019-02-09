@@ -26,7 +26,7 @@ export default class extends PureComponent {
 
     return <MediaQueryConsumer>{({isMobile}) => <>
       <Head>
-        <title>{siteData.title} - Showcase</title>
+        <title>Showcase | {siteData.title}</title>
       </Head>
       <div className="lightbox" onClick={this.clickOuter} ref={el => this.lightbox = el}>
         <style jsx>{`

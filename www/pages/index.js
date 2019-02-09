@@ -13,10 +13,10 @@ import Learn from '../components/home/learn';
 import SocialMeta from '../components/social-meta';
 
 export default () => (
-  <Page title="Next.js">
+  <Page title="Next.js - The React Framework">
     <SocialMeta
       image={'/static/twitter-cards/home.jpg'}
-      title="Next.js"
+      title="Next.js - The React Framework"
       url="https://nextjs.org"
       description="Next.js is a lightweight framework for static and server-rendered applications"
     />
