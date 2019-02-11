@@ -92,12 +92,14 @@ Next, let's import this component and use it in our pages. For the \`index.js\` 
 ~~~js
 import Header from '../components/Header'
 
-export default () => (
-  <div>
-    <Header />
-    <p>Hello Next.js</p>
-  </div>
-)
+export default function Home() {
+  return (
+    <div>
+      <Header />
+      <p>Hello Next.js</p>
+    </div>
+  )
+}
 ~~~
 
 You can do the same for the  about.js page as well.
@@ -181,11 +183,13 @@ Once we've done that, we can use this Layout in our pages as follows:
 
 import Layout from '../components/MyLayout.js'
 
-export default () => (
+export default function Home() {
+  return (
     <Layout>
        <p>Hello Next.js</p>
     </Layout>
-)
+  )
+}
 ~~~
 
 ~~~js
@@ -193,11 +197,13 @@ export default () => (
 
 import Layout from '../components/MyLayout.js'
 
-export default () => (
+export default function About() {
+  return (
     <Layout>
        <p>This is the about page</p>
     </Layout>
-)
+  )
+}
 ~~~
 
 Remember, you can access the app at http://localhost:3000/ to see what it looks like.
@@ -218,11 +224,14 @@ What will happen to the app?
 If you remove \`{props.children}\`, the Layout cannot render the content we put inside the \`Layout\` element, as shown below:
 
 ~~~js
-export default () => (
+
+export default function About() {
+  return (
     <Layout>
-       <p>This is the about page</p>
+      <p>This is the about page</p>
     </Layout>
-)
+  )
+}
 ~~~
 
 This is just one way to create a Layout component. Here are some other methods of creating a Layout component:
@@ -242,13 +251,17 @@ const Page = () => (
   <p>This is the about page</p>
 )
 
-export default () => (<Layout page={Page}/>)
+export default function LayoutWrapper() {
+  return <Layout page={Page}/>
+}
 ~~~
 
 ~~~js
 const content = (<p>This is the about page</p>)
 
-export default () => (<Layout content={content}/>)
+export default function LayoutWrapper() {
+  return <Layout content={content}/>
+}
 ~~~
       `
     },

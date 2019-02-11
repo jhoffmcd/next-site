@@ -75,43 +75,45 @@ function getPosts () {
   ]
 }
 
-export default () => (
-  <Layout>
-    <h1>My Blog</h1>
-    <ul>
-      {getPosts().map((post) => (
-        <li key={post.id}>
-          <Link as={\`/p/\${post.id}\`} href={\`/post?title=\${post.title}\`}>
-            <a>{post.title}</a>
-          </Link>
-        </li>
-      ))}
-    </ul>
-    <style jsx>{\`
-      h1, a {
-        font-family: "Arial";
-      }
+export default function Blog() {
+  return (
+    <Layout>
+      <h1>My Blog</h1>
+      <ul>
+        {getPosts().map((post) => (
+          <li key={post.id}>
+            <Link as={\`/p/\${post.id}\`} href={\`/post?title=\${post.title}\`}>
+              <a>{post.title}</a>
+            </Link>
+          </li>
+        ))}
+      </ul>
+      <style jsx>{\`
+        h1, a {
+          font-family: "Arial";
+        }
 
-      ul {
-        padding: 0;
-      }
+        ul {
+          padding: 0;
+        }
 
-      li {
-        list-style: none;
-        margin: 5px 0;
-      }
+        li {
+          list-style: none;
+          margin: 5px 0;
+        }
 
-      a {
-        text-decoration: none;
-        color: blue;
-      }
+        a {
+          text-decoration: none;
+          color: blue;
+        }
 
-      a:hover {
-        opacity: 0.6;
-      }
-    \`}</style>
-  </Layout>
-)
+        a:hover {
+          opacity: 0.6;
+        }
+      \`}</style>
+    </Layout>
+  )
+}
 ~~~
 
 Have a look at the \`<style jsx>\` element. This is where we write our CSS rules.
@@ -203,39 +205,41 @@ const PostLink = ({ post }) => (
   </li>
 )
 
-export default () => (
-  <Layout>
-    <h1>My Blog</h1>
-    <ul>
-      {getPosts().map((post) => (
-        <PostLink key={post.id} post={post}/>
-      ))}
-    </ul>
-    <style jsx>{\`
-      h1, a {
-        font-family: "Arial";
-      }
+export default function Blog() {
+  return (
+    <Layout>
+      <h1>My Blog</h1>
+      <ul>
+        {getPosts().map((post) => (
+          <PostLink key={post.id} post={post}/>
+        ))}
+      </ul>
+      <style jsx>{\`
+        h1, a {
+          font-family: "Arial";
+        }
 
-      ul {
-        padding: 0;
-      }
+        ul {
+          padding: 0;
+        }
 
-      li {
-        list-style: none;
-        margin: 5px 0;
-      }
+        li {
+          list-style: none;
+          margin: 5px 0;
+        }
 
-      a {
-        text-decoration: none;
-        color: blue;
-      }
+        a {
+          text-decoration: none;
+          color: blue;
+        }
 
-      a:hover {
-        opacity: 0.6;
-      }
-    \`}</style>
-  </Layout>
-)
+        a:hover {
+          opacity: 0.6;
+        }
+      \`}</style>
+    </Layout>
+  )
+}
 ~~~
 
 Replace the above content in \`pages/index.js\`
