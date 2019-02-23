@@ -17,7 +17,7 @@ export default withMediaQuery(({ title, description, children }) => (
         name="description"
         content={
           description ||
-          'Next.js is a lightweight framework for static and server-rendered applications'
+          'Production grade React applications that scale. The world’s leading companies use Next.js to build server-rendered applications, static websites, and more.'
         }
       />
     </Head>

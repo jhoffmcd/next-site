@@ -35,6 +35,9 @@ export default class extends PureComponent {
           color: inherit;
         }
         .tab {
+          background-color: transparent;
+          border: none;
+          font-weight: inherit;
           display: inline-block;
           height: 100%;
           line-height: 2rem;
@@ -108,9 +111,9 @@ export default class extends PureComponent {
         {
           (isMobile ? categoriesShort : categories).map((_, index) => {
             let id = categories[index]
-            return <span className={`no-tap-highlight tab${selectedId === id ? ' selected' : ''} f6`} role='button' onClick={() => onSelect(id)} key={id}>
+            return <button className={`no-tap-highlight tab${selectedId === id ? ' selected' : ''} f6`} onClick={() => onSelect(id)} key={id}>
               {_}
-            </span>
+            </button>
           })
         }
         { 

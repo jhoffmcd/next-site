@@ -1,5 +1,3 @@
-import Head from 'next/head';
-
 import Page from '../../components/page';
 import Header from '../../components/header';
 import Navbar from '../../components/navbar';
@@ -16,28 +14,19 @@ import Features from '../../components/static-exporting/features';
 import Docs from '../../components/static-exporting/docs';
 import Customers from '../../components/static-exporting/customers';
 
+const title = 'Features - Static Exporting | Next.js';
 export default () => (
-  <Page>
-    <Head>
-      <title>Features - Static Exporting | Next.js</title>
-      <meta
-        name="description"
-        content="Leverage the speed and simplicity of static sites with the full power of Next.js"
-      />
-      <meta
-        name="keywords"
-        content="Static site generation, Static exporting, Static exports, Next, JavaScript, Web Framework"
-      />
-    </Head>
+  <Page title={title}>
     <SocialMeta
-      title="Features - Static Exporting | Next.js"
+      title={title}
       description="Leverage the speed and simplicity of static sites with the full power of Next.js"
       image="/static/twitter-cards/static-exporting.png"
       url="https://nexts.org/features/static-exporting"
+      keywords="Static site generation, Static exporting, Static exports, Next, JavaScript, Web Framework"
     />
     <MediaQueryConsumer>
       {({ isMobile }) => (
-        <Header height={64 + (isMobile ? 32 : 0)} shadow={!isMobile} dotBackground active={64}>
+        <Header height={64 + (isMobile ? 32 : 0)} shadow dotBackground active={64}>
           <Navbar />
         </Header>
       )}

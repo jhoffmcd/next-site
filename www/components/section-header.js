@@ -1,7 +1,7 @@
 import withPure from './hoc/pure';
 
-export default withPure(({ anchor, id, title, description }) => (
-  <div>
+export default withPure(({ anchor, id, title, description, innerRef }) => (
+  <div ref={innerRef}>
     <style jsx>
       {`
         h2 {

@@ -24,7 +24,7 @@ In this lesson, we need a simple Next.js app to play with. Try downloading the f
 ~~~bash
 git clone https://github.com/arunoda/learnnextjs-demo.git
 cd learnnextjs-demo
-git checkout using-shared-components
+git checkout navigate-between-pages
 ~~~
 
 You can run it with:
@@ -56,14 +56,14 @@ const linkStyle = {
 }
 
 const Header = () => (
-    <div>
-        <Link href="/">
-          <a style={linkStyle}>Home</a>
-        </Link>
-        <Link href="/about">
-          <a style={linkStyle}>About</a>
-        </Link>
-    </div>
+  <div>
+    <Link href="/">
+      <a style={linkStyle}>Home</a>
+    </Link>
+    <Link href="/about">
+      <a style={linkStyle}>About</a>
+    </Link>
+  </div>
 )
 
 export default Header
@@ -182,9 +182,9 @@ Once we've done that, we can use this Layout in our pages as follows:
 import Layout from '../components/MyLayout.js'
 
 export default () => (
-    <Layout>
-       <p>Hello Next.js</p>
-    </Layout>
+  <Layout>
+    <p>Hello Next.js</p>
+  </Layout>
 )
 ~~~
 
@@ -194,9 +194,9 @@ export default () => (
 import Layout from '../components/MyLayout.js'
 
 export default () => (
-    <Layout>
-       <p>This is the about page</p>
-    </Layout>
+  <Layout>
+    <p>This is the about page</p>
+  </Layout>
 )
 ~~~
 
@@ -219,9 +219,9 @@ If you remove \`{props.children}\`, the Layout cannot render the content we put 
 
 ~~~js
 export default () => (
-    <Layout>
-       <p>This is the about page</p>
-    </Layout>
+  <Layout>
+    <p>This is the about page</p>
+  </Layout>
 )
 ~~~
 

@@ -46,6 +46,11 @@ export default ({ data, children }) => {
         -webkit-overflow-scrolling: touch;
       }
       .tab {
+        margin: 0;
+        line-height: inherit;
+        font-size: inherit;
+        background-color: transparent;
+        border: none;
         display: inline-block;
         padding: 0 .5rem;
         color: #969696;
@@ -54,7 +59,7 @@ export default ({ data, children }) => {
       .tab:hover, .tab:active {
         background: #272727;
       }
-      .tab.selected {
+      .selected {
         background: #0c0c0c;
         color: #e8e8e8;
       }
@@ -76,13 +81,13 @@ export default ({ data, children }) => {
           </div>
           <div className='title f6 no-drag'>
             {data.editorTabs.map(file => 
-              <span
+              <button
                 key={file} 
                 className={classNames('tab', {selected: selectedFile === file})} 
                 onClick={() => onSelect(file)}
               >
                 {file}
-              </span>)}
+              </button>)}
           </div>
         </div>
         <div className='content'>

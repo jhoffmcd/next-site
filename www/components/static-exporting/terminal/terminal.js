@@ -226,14 +226,21 @@ function generateFrames(onRender) {
 
 export default class Console extends React.PureComponent {
   render() {
-    const { running, showResult } = this.props;
+    const { showResult, height } = this.props;
 
     const classes = ['console'];
 
     return (
-      <Window title={null} height={275} mobileHeight={275} backgroundColor="black">
+      <Window
+        title={null}
+        height={height || 275}
+        mobileHeight={height || 275}
+        backgroundColor="black"
+      >
         <div className={classes.join(' ')}>
-          {running && <Keyframes component="pre">{generateFrames(showResult)}</Keyframes>}
+          {this.props.children || (
+            <Keyframes component="pre">{generateFrames(showResult)}</Keyframes>
+          )}
           <style>
             {`
             pre {

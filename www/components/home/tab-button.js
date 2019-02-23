@@ -1,27 +1,43 @@
-import classNames from 'classnames'
+import classNames from 'classnames';
 
-export default ({isMobile, light, invert, selected, onClick, children}) => (
-  <a className={classNames('fw4 no-drag no-tap-highlight', { selected, f5: isMobile })} onClick={onClick}>
+export default ({ isMobile, light, invert, selected, onClick, children }) => (
+  <button
+    className={classNames('fw4 no-drag no-tap-highlight', { selected, f5: isMobile })}
+    onClick={onClick}
+  >
     <style jsx>{`
-      a {
+      button {
         display: inline-block;
         border-radius: 7px;
         cursor: pointer;
         text-decoration: none;
-        padding: .25rem .5rem;
+        padding: 0.25rem 0.5rem;
         margin: ${isMobile ? '.25rem' : '0 1rem'};
         color: ${invert ? '#8D8D8D' : '#999'};
-        transition: all .2s ease;
+        transition: all 0.2s ease;
+        background-color: transparent;
+        font-size: inherit;
+        border: none;
+        line-height: inherit;
+        flex: ${isMobile ? '0 0 100%' : 'initial'};
       }
-      a:hover {
+      button:hover {
         // color;
-        ${light ? '' : invert ? 'background-color: rgba(255, 255, 255, .05)' : 'background-color: rgba(0, 0, 0, .05)'};
+        ${light
+          ? ''
+          : invert
+            ? 'background-color: rgba(255, 255, 255, .05)'
+            : 'background-color: rgba(0, 0, 0, .05)'};
       }
-      a.selected {
+      button.selected {
         color: ${invert ? '#efefef' : 'inherit'};
-        ${light ? '' : invert ? 'background-color: rgba(255, 255, 255, .1)' : 'background-color: rgba(0, 0, 0, .1)'};
+        ${light
+          ? ''
+          : invert
+            ? 'background-color: rgba(255, 255, 255, .1)'
+            : 'background-color: rgba(0, 0, 0, .1)'};
       }
     `}</style>
     {children}
-  </a>
-)
+  </button>
+);

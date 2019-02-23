@@ -135,10 +135,10 @@ import {withRouter} from 'next/router'
 import Layout from '../components/MyLayout.js'
 
 const Page = withRouter((props) => (
-    <Layout>
-       <h1>{props.router.query.title}</h1>
-       <p>This is the blog post content.</p>
-    </Layout>
+  <Layout>
+     <h1>{props.router.query.title}</h1>
+     <p>This is the blog post content.</p>
+  </Layout>
 ))
 
 export default Page
@@ -170,9 +170,9 @@ const Content = (props) => (
 )
 
 const Page = withRouter((props) => (
-    <Layout>
-       <Content />
-    </Layout>
+  <Layout>
+    <Content />
+  </Layout>
 ))
 
 export default Page
@@ -209,9 +209,9 @@ const Content = withRouter((props) => (
 ))
 
 const Page = (props) => (
-    <Layout>
-       <Content />
-    </Layout>
+  <Layout>
+    <Content />
+  </Layout>
 )
 
 export default Page

@@ -9,11 +9,11 @@ export default class MyDocument extends Document {
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-          <meta name="description" content="Next.js is a lightweight framework for static and server-rendered applications" />
+          <meta name="description" content="Production grade React applications that scale. The world’s leading companies use Next.js to build server-rendered applications, static websites, and more." />
           <meta name="twitter:site" content="@zeithq" />
           <meta name="og:title" content='Learn | Next.js' />
           <meta name="og:url" content='https://nextjs.org/learn' />
-          <meta name="og:description" content='Next.js is a lightweight framework for static and server-rendered applications' />
+          <meta name="og:description" content='Production grade React applications that scale. The world’s leading companies use Next.js to build server-rendered applications, static websites, and more.' />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="og:image" content='https://nextjs.org/static/twitter-cards/learn.png' />
 

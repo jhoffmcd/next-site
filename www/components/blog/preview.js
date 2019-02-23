@@ -32,7 +32,9 @@ export default ({
         }
         .post-title {
           display: inline-block;
-          cursor: pointer;
+        }
+        .post-title a {
+          color: inherit;
         }
         .read-more {
           margin-top: 2rem;
@@ -88,9 +90,11 @@ export default ({
         <div className="preview-layout">
           <div className="preview-content">
             {type && <span className="post-type mute fw6">{type}</span>}
-            <Link href={link} prefetch={prefetch}>
-              <h3 className="f2 fw6 post-title">{title}</h3>
-            </Link>
+            <h3 className="f2 fw6 post-title">
+              <Link href={link} prefetch={prefetch}>
+                <a href={link}>{title}</a>
+              </Link>
+            </h3>
             <p className="f6 date mute">
               {formatDate(date, 'dddd, MMMM Do YYYY')} (
               {distanceInWordsToNow(date, {

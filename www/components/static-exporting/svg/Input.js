@@ -1,4 +1,4 @@
-export default props => (
+export default () => (
   <>
     <svg width={272} height={340} fill="none">
       <rect x={50} y={36} width={172} height="239.643" rx={7} fill="#fff" filter="url(#a)" />

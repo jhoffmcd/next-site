@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-export default ({ title, description, image, url }) => (
+export default ({ title, description, image, url, keywords }) => (
   <Head>
     <meta name="twitter:site" content="@zeithq" />
     {title && <meta name="og:title" content={title} />}
@@ -9,5 +9,6 @@ export default ({ title, description, image, url }) => (
     {description && <meta name="og:description" content={description} />}
     {image && <meta name="twitter:card" content="summary_large_image" />}
     {image && <meta name="og:image" content={'https://nextjs.org' + image} />}
+    {keywords && <meta name="keywords" content={keywords} />}
   </Head>
 );

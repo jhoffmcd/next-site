@@ -257,42 +257,42 @@ export default class Sidebar extends PureComponent {
                 </Container>
               </div>
             </Header>
-            <style jsx>{`
-              .docs-select {
-                height: 3rem;
-                width: 100%;
-                border-top: 1px solid #f5f5f5;
-                line-height: 3rem;
-                text-align: left;
-                cursor: pointer;
-              }
-              .docs-select img {
-                vertical-align: middle;
-                margin-top: -2px;
-              }
-              .docs-dropdown {
-                position: absolute;
-                left: 0;
-                right: 0;
-                top: 100%;
-                bottom: -50vh;
-                background: white;
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-                transition: bottom 0.5s ease;
-                overflow-y: auto;
-                -webkit-overflow-scrolling: touch;
-              }
-              .docs-dropdown.docs-closed {
-                bottom: 100%;
-              }
-              .documentation__sidebar nav {
-                padding-left: 28px;
-              }
-              .negative-spacer {
-                margin: 0 -1rem;
-              }
-            `}</style>
           </div>
+          <style jsx>{`
+            .docs-select {
+              height: 3rem;
+              width: 100%;
+              border-top: 1px solid #f5f5f5;
+              line-height: 3rem;
+              text-align: left;
+              cursor: pointer;
+            }
+            .docs-select img {
+              vertical-align: middle;
+              margin-top: -2px;
+            }
+            .docs-dropdown {
+              position: absolute;
+              left: 0;
+              right: 0;
+              top: 100%;
+              bottom: -50vh;
+              background: white;
+              box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+              transition: bottom 0.5s ease;
+              overflow-y: auto;
+              -webkit-overflow-scrolling: touch;
+            }
+            .docs-dropdown.docs-closed {
+              bottom: 100%;
+            }
+            .documentation__sidebar nav {
+              padding-left: 28px;
+            }
+            .negative-spacer {
+              margin: 0 -1rem;
+            }
+          `}</style>
           <style jsx global>{`
             :global(.target.docs-anchor-target) {
               margin-top: -208px;

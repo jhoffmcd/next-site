@@ -17,8 +17,8 @@ export default class Globe extends React.PureComponent {
       })
     );
 
-    const width = window.innerWidth;
-    const height = window.innerHeight - 120;
+    const width = window.innerWidth * window.devicePixelRatio;
+    const height = window.innerHeight * window.devicePixelRatio - 120;
 
     globe.projection.translate([width / 2, height / 2]).scale(Math.min(width, height) / 2);
 

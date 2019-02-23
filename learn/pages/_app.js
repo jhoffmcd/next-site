@@ -1,7 +1,10 @@
 import React from 'react'
 import App, { Container } from 'next/app'
-import {setToken, removeToken} from '../lib/authenticate'
 import url from 'url'
+
+import { setToken, removeToken } from '../lib/authenticate'
+import NProgress from '../components/nprogress'
+
 export default class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
     if(!process.browser) {
@@ -38,6 +41,7 @@ export default class MyApp extends App {
     return (
       <Container>
         <Component {...pageProps} />
+        <NProgress />
       </Container>
     )
   }
