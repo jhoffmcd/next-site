@@ -2,29 +2,33 @@ import Code from './code'
 import withFrame from './frame'
 
 const IndexFile = () => <Code>{
-`import Link from 'next/link'
+  `import Link from 'next/link'
 
-export default () => (
-  <div>
-    <h1>Hello Next.js 👋</h1>
-    <Link href='/about'><a>About</a></Link>
-  </div>
-)
+export default function Home() {
+  return (
+    <div>
+      <h1>Hello Next.js 👋</h1>
+      <Link href='/about'><a>About</a></Link>
+    </div>
+  )
+}
 `}</Code>
 
 const AboutFile = () => <Code>{
-`import Link from 'next/link'
+  `import Link from 'next/link'
 
-export default () => (
-  <div>
-    <p>This is the about page</p>
-    <Link href='/'><a>Go home</a></Link>
-  </div>
-)
+export default function About() {
+  return (
+    <div>
+      <p>This is the about page</p>
+      <Link href='/'><a>Go home</a></Link>
+    </div>
+  )
+}
 `}</Code>
 
 const PackageFile = () => <Code lang='json'>{
-`{
+  `{
   "scripts": {
     "dev": "next",
     "build": "next build",
@@ -39,14 +43,14 @@ const PackageFile = () => <Code lang='json'>{
 }
 `}</Code>
 
-const IndexPage = withFrame(({A}) => 
+const IndexPage = withFrame(({ A }) =>
   <div>
     <h1>Hello Next.js 👋</h1>
     <A tab='http://localhost:3000/about'>About</A>
   </div>
 )
 
-const AboutPage = withFrame(({A}) => 
+const AboutPage = withFrame(({ A }) =>
   <div>
     <p>This is the about page</p>
     <A tab='http://localhost:3000'>Go home</A>
