@@ -9,7 +9,6 @@ import Navbar from '../navbar';
 import Page from '../page';
 import Container from '../container';
 import Button from '../button';
-import { MediaQueryConsumer } from '../media-query';
 import { components } from './post-components';
 import SocialMeta from '../social-meta';
 import ArrowLeftLong from '../icons/arrow-left-long';
@@ -107,17 +106,10 @@ export default meta => ({ children }) => {
   return (
     <MDXProvider components={components}>
       <Page title={`Blog - ${meta.title} | Next.js`}>
-        <SocialMeta
-          image={'/static' + meta.link + '/twitter-card.png'}
-          {...meta}
-        />
-        <MediaQueryConsumer>
-          {({ isMobile }) => (
-            <Header height={64 + (isMobile ? 32 : 0)} shadow defaultActive>
-              <Navbar />
-            </Header>
-          )}
-        </MediaQueryConsumer>
+        <SocialMeta image={`/static${meta.link}/twitter-card.png`} {...meta} />
+        <Header height={{ desktop: 64, mobile: 64 + 32 }} shadow defaultActive>
+          <Navbar />
+        </Header>
         <HeaderImage {...meta} />
         <Container padding>
           <h1 className="title fw6 f0">{meta.title}</h1>

@@ -1,0 +1,18 @@
+import Layout from '~/components/Layout'
+
+export const meta = {
+  title: 'Lazy Loading Components',
+  courseId: 'excel',
+  lessonId: 'lazy-loading-components',
+  stepId: 'analyze-result'
+}
+
+## Analyze Result
+
+As you have seen, it's included in the `commons.js` bundle. That's because it's used in almost every page in our blog app.
+
+![](https://user-images.githubusercontent.com/50838/28258431-ca80888a-6aee-11e7-9f38-5d27fee0d649.png)
+
+In this result page, we can't even see the `react-highlight` module. That's because it's pretty small. The module `highlight.js`, which is used inside it, is the heavy module.
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>

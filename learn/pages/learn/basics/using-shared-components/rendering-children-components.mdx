@@ -1,0 +1,44 @@
+import Layout from '~/components/Layout'
+
+export const meta = {
+  title: 'Using Shared Components',
+  courseId: 'basics',
+  lessonId: 'using-shared-components',
+  stepId: 'rendering-children-components'
+}
+
+## Rendering Child Components
+
+If you remove `{props.children}`, the Layout cannot render the content we put inside the `Layout` element, as shown below:
+
+```js
+export default () => (
+  <Layout>
+    <p>This is the about page</p>
+  </Layout>
+)
+```
+
+This is just one way to create a Layout component. Here are some other methods of creating a Layout component:
+
+```js
+import withLayout from '../lib/layout'
+
+const Page = () => <p>This is the about page</p>
+
+export default withLayout(Page)
+```
+
+```js
+const Page = () => <p>This is the about page</p>
+
+export default () => <Layout page={Page} />
+```
+
+```js
+const content = <p>This is the about page</p>
+
+export default () => <Layout content={content} />
+```
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>

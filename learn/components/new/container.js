@@ -1,6 +1,7 @@
-export default ({center, dark, gray, wide, padding, overflow, children, ...props}) => {
-  return <div {...props}>
-    <style jsx>{`
+export default ({ center, dark, gray, wide, padding, overflow, children, ...props }) => {
+  return (
+    <div {...props}>
+      <style jsx>{`
       {
         width: 100%;
         margin: 0 auto;
@@ -19,6 +20,7 @@ export default ({center, dark, gray, wide, padding, overflow, children, ...props
         clear: both;
       }
     `}</style>
-    {children}
-  </div>
+      {children}
+    </div>
+  )
 }

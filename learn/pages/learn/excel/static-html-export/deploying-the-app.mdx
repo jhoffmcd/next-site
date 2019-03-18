@@ -1,0 +1,23 @@
+import Layout from '~/components/Layout'
+
+export const meta = {
+  title: 'Export into a Static HTML App',
+  courseId: 'excel',
+  lessonId: 'static-html-export',
+  stepId: 'deploying-the-app'
+}
+
+## Deploying the App
+
+Deploying the app is pretty simple. Simply visit the "out" directory and deploy it to your favorite static hosting service.
+
+If you are using [ZEIT now](https://zeit.co/blog/unlimited-static), this is how to do it:
+
+```bash
+cd out
+now
+```
+
+![](https://user-images.githubusercontent.com/50838/28051263-be887132-6620-11e7-814a-9b2e5903c250.png)
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>

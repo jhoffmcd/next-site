@@ -13,8 +13,8 @@ const wrap = (child, styles) => {
       ...child.props,
       style: {
         ...child.props.style,
-        ...styles,
-      },
+        ...styles
+      }
     }
     return <Component {...props} />
   }

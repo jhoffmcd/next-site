@@ -4,7 +4,6 @@ import OpenCollective from '../icons/companies/opencollective';
 import Eaze from '../icons/companies/eaze';
 import MagicLeap from '../icons/companies/magic-leap';
 import Trulia from '../icons/companies/trulia';
-import MozillaVR from '../icons/companies/mozilla-vr';
 import Netflix from '../icons/companies/netflix';
 import GitHub from '../icons/companies/github';
 import Scale from '../icons/companies/scale';
@@ -24,8 +23,8 @@ import Starbucks from '../icons/companies/starbucks';
 import Uber from '../icons/companies/uber';
 import Trovit from '../icons/companies/trovit';
 
-export default () => (
-  <div className="company-slider">
+export default function CompanySlider() {
+  return <div className="company-slider">
     <BackgroundSlider duration={40}>
       <div className="company-logos-container">
         <div>
@@ -39,9 +38,6 @@ export default () => (
         </div>
         <div>
           <Trulia />
-        </div>
-        <div>
-          <MozillaVR />
         </div>
         <div>
           <Netflix />
@@ -125,4 +121,4 @@ export default () => (
       }
     `}</style>
   </div>
-);
+};

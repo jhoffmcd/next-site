@@ -1,0 +1,18 @@
+import Layout from '~/components/Layout'
+
+export const meta = {
+  title: 'Deploying a Next.js App',
+  courseId: 'basics',
+  lessonId: 'deploying-a-nextjs-app',
+  stepId: 'zeit-now-port-443'
+}
+
+## ZEIT Now will always use 443
+
+Even if you start your app on port 8000, once deployed to now, you can access it with port 443 (the default port for "https" websites).
+
+That's a feature of ▲ZEIT Now. You only need to start your app on any port you like elsewhere. ▲ZEIT Now will map it to port 443 always.
+
+> Learn more about the Next builder @now/next at [the ZEIT documentation](https://zeit.co/docs/v2/deployments/official-builders/next-js-now-next).
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>

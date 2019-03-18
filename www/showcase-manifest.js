@@ -22,7 +22,7 @@ const frontSortOrder = [
   'magic-leap',
   'nike',
   'netflix-jobs',
-  'mozilla-vr'
+  'uber'
 ];
 
 const sortOrder = [
@@ -31,7 +31,6 @@ const sortOrder = [
   'invision',
   'magic-leap',
   'nike',
-  'mozilla-vr',
   'netflix-jobs',
   'hulu',
   'boosted-boards',
@@ -678,15 +677,6 @@ const mapping = {
     height: 2198,
     internalUrl: 'zeit',
     tags: ['creative']
-  },
-  'mozilla-vr': {
-    title: 'Mozilla VR',
-    link: 'https://mixedreality.mozilla.org',
-    src: '/static/images/showcases/showcases-10.jpg',
-    width: 3830,
-    height: 2196,
-    internalUrl: 'mozilla-vr',
-    tags: ['dev', 'creative']
   },
   avocode: {
     title: 'Avocode',

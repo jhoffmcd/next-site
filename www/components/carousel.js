@@ -6,9 +6,9 @@ import { MediaQueryConsumer } from './media-query';
 import ArrowNext from './icons/arrow-next';
 import ArrowPrev from './icons/arrow-previous';
 
-const slideWidth = 43.5; //rem
-const tabletSlideWidth = 23; //rem
-const mobileSlideWidth = 18; //rem
+const slideWidth = 43.5; // rem
+const tabletSlideWidth = 23; // rem
+const mobileSlideWidth = 18; // rem
 
 const Item = posed.div({
   flip: {
@@ -49,15 +49,19 @@ export default class Carousel extends React.PureComponent {
     };
   }
 
-  next = () =>
+  next = () => {
+    const { slides } = this.props;
     this.setState(({ index }) => ({
-      index: (index + 1) % this.props.slides.length
+      index: (index + 1) % slides.length
     }));
+  };
 
-  prev = () =>
+  prev = () => {
+    const { slides } = this.props;
     this.setState(({ index }) => ({
-      index: index === 0 ? this.props.slides.length - 1 : index - 1
+      index: index === 0 ? slides.length - 1 : index - 1
     }));
+  };
 
   render() {
     const { pivot } = this;
@@ -137,7 +141,6 @@ export default class Carousel extends React.PureComponent {
             height: 100%;
             width: 100%;
           }
-
           .slides {
             display: flex;
             position: absolute;

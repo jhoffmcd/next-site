@@ -98,6 +98,24 @@ export default withPure(() => (
             </p>
           </div>
           <div className="column">
+            <h4 className="fw5">Features</h4>
+            <p>
+              <Link href="/features/server-side-rendering">
+                <a>SSR</a>
+              </Link>
+            </p>
+            <p>
+              <Link href="/features/static-exporting">
+                <a>Static Exporting</a>
+              </Link>
+            </p>
+            <p>
+              <Link href="/features/css-in-js">
+                <a>CSS-in-JS</a>
+              </Link>
+            </p>
+          </div>
+          <div className="column">
             <h4 className="fw5">
               <Link href="/learn">
                 <a>Learn</a>

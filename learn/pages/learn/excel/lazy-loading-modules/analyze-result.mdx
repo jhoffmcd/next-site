@@ -1,0 +1,18 @@
+import Layout from '~/components/Layout'
+
+export const meta = {
+  title: 'Lazy Loading Modules',
+  courseId: 'excel',
+  lessonId: 'lazy-loading-modules',
+  stepId: 'analyze-result'
+}
+
+## Analyze Result
+
+As you have seen, the firebase module stays inside the `commons.js` bundle.
+
+![](https://user-images.githubusercontent.com/50838/28233926-30504a3e-6918-11e7-96fc-473b9f7a4a29.png)
+
+That is simply happening because it is used in all of the pages in our app.
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>

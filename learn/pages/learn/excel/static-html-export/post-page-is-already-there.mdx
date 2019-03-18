@@ -1,0 +1,16 @@
+import Layout from '~/components/Layout'
+
+export const meta = {
+  title: 'Export into a Static HTML App',
+  courseId: 'excel',
+  lessonId: 'static-html-export',
+  stepId: 'post-page-is-already-there'
+}
+
+## Post Page is Already There
+
+Next.js won't build the app when running the `next export` command. In this case, the `/post` page already exists in the build, and there's no need to build the whole app again.
+
+But if we've made any changes to the app, we need to build the app again to get those changes.
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>

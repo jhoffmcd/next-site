@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 
-export default ({ isMobile, light, invert, selected, onClick, children }) => (
-  <button
+export default function TabButton({ isMobile, light, invert, selected, onClick, children }) {
+  return <button
     className={classNames('fw4 no-drag no-tap-highlight', { selected, f5: isMobile })}
     onClick={onClick}
   >
@@ -40,4 +40,4 @@ export default ({ isMobile, light, invert, selected, onClick, children }) => (
     `}</style>
     {children}
   </button>
-);
+};

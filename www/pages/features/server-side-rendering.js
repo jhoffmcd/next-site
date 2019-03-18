@@ -2,7 +2,6 @@ import Page from '../../components/page';
 import Header from '../../components/header';
 import Navbar from '../../components/navbar';
 import Footer from '../../components/footer';
-import { MediaQueryConsumer } from '../../components/media-query';
 import SocialMeta from '../../components/social-meta';
 
 import Hero from '../../components/server-side-rendering/hero';
@@ -21,20 +20,11 @@ export default () => (
       description="Take the pain out of creating Universal React apps with Next.js"
       image="/static/twitter-cards/server-side-rendering.png"
       url="https://nexts.org/features/server-side-rendering"
-      keywords="Server side rendering, Server rendering, SSR, Next, JavaScript, Web Framework"
+      keywords="Server side rendering, Server rendering, SSR, Serverless, JavaScript, Web Framework"
     />
-    <MediaQueryConsumer>
-      {({ isMobile }) => (
-        <Header
-          height={64 + (isMobile ? 32 : 0)}
-          shadow
-          dotBackground
-          active={64}
-        >
-          <Navbar />
-        </Header>
-      )}
-    </MediaQueryConsumer>
+    <Header height={{ desktop: 64, mobile: 64 + 32 }} shadow dotBackground>
+      <Navbar />
+    </Header>
     <Hero />
     <Features />
     <Benefits />

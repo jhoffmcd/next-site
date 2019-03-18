@@ -1,0 +1,23 @@
+import Layout from '~/components/Layout'
+
+export const meta = {
+  title: 'Deploying a Next.js App',
+  courseId: 'basics',
+  lessonId: 'deploying-a-nextjs-app',
+  stepId: 'build-your-app-locally'
+}
+
+## Build Your App Locally
+
+▲ZEIT Now will build your app inside it's build infrastructure.
+
+But, not every hosting provider will have something like that.
+In that case, you can build your app locally with:
+
+```bash
+npm run build
+```
+
+Then deploy the app with the `.next` directory.
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>

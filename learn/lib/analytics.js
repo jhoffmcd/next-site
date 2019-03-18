@@ -5,7 +5,7 @@ export const trackPageview = url => {
     window.gtag('config', GA_TRACKING_ID, {
       page_location: url
     })
-  } catch(err) {
+  } catch (err) {
     console.error('Failed sending metrics', err)
   }
 }
@@ -17,7 +17,7 @@ export const trackEvent = ({ action, category, label, value }) => {
       event_label: label,
       value: value
     })
-  } catch(err) {
+  } catch (err) {
     console.error('Failed sending metrics', err)
   }
 }

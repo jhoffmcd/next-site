@@ -41,8 +41,6 @@ So far, we get:
 - Server rendering and indexing of `./pages`
 - Static file serving. `./static/` is mapped to `/static/` (given you [create a `./static/` directory](#static-file-serving-eg-images) inside your project)
 
-To see how simple this is, check out the [sample app - nextgram](https://github.com/zeit/nextgram)
-
 ### Automatic code splitting
 
 Every `import` you declare gets bundled and served with each page. That means pages never load unnecessary code!
@@ -72,7 +70,6 @@ export default CowsayHi
   </ul>
 </details>
 
-<p></p>
 
 We bundle [styled-jsx](https://github.com/zeit/styled-jsx) to provide support for isolated scoped CSS. The aim is to support "shadow CSS" similar to Web Components, which unfortunately [do not support server-rendering and are JS-only](https://github.com/w3c/webcomponents/issues/71).
 
@@ -125,7 +122,6 @@ Please see the [styled-jsx documentation](https://www.npmjs.com/package/styled-j
   </ul>
 </details>
 
-<p></p>
 
 It's possible to use any existing CSS-in-JS solution. The simplest one is inline styles:
 
@@ -172,7 +168,6 @@ _Note: Don't name the `static` directory anything else. The name is required and
   </ul>
 </details>
 
-<p></p>
 
 We expose a built-in component for appending elements to the `<head>` of the page.
 
@@ -232,7 +227,6 @@ _Note: `<title>` and `<meta>` elements need to be contained as **direct** childr
   </ul>
 </details>
 
-<p></p>
 
 When you need state, lifecycle hooks or **initial data population** you can export a `React.Component` (instead of a stateless function, like shown above):
 
@@ -311,7 +305,6 @@ Next.js does not ship a routes manifest with every possible route in the applica
   </ul>
 </details>
 
-<p></p>
 
 Client-side transitions between routes can be enabled via a `<Link>` component.
 
@@ -404,7 +397,6 @@ To inject the `pathname`, `query` or `asPath` in your component, you can use [wi
   </ul>
 </details>
 
-<p></p>
 
 The component `<Link>` can also receive an URL object and it will automatically format it to create the URL string.
 
@@ -516,7 +508,6 @@ The default behaviour of `<Link>` is to scroll to the top of the page. When ther
   </ul>
 </details>
 
-<p></p>
 
 You can also do client-side page transitions using the `next/router`
 
@@ -646,7 +637,6 @@ Router.events.on('routeChangeError', (err, url) => {
   </ul>
 </details>
 
-<p></p>
 
 Shallow routing allows you to change the URL without running `getInitialProps`. You'll receive the updated `pathname` and the `query` via the `router` prop (injected using [`withRouter`](#using-a-higher-order-component)), without losing state.
 
@@ -690,7 +680,6 @@ componentDidUpdate(prevProps) {
   </ul>
 </details>
 
-<p></p>
 
 If you want to access the `router` object inside any component in your app, you can use the `withRouter` Higher-Order Component. Here's how to use it:
 
@@ -731,7 +720,6 @@ The above `router` object comes with an API similar to [`next/router`](#imperati
   </ul>
 </details>
 
-<p></p>
 
 Next.js has an API which allows you to prefetch pages.
 
@@ -746,7 +734,7 @@ You can add `prefetch` prop to any `<Link>` and Next.js will prefetch those page
 ```jsx
 import Link from 'next/link'
 
-function Header() { 
+function Header() {
   return (
     <nav>
       <ul>
@@ -780,7 +768,7 @@ Most prefetching needs are addressed by `<Link />`, but we also expose an impera
 ```jsx
 import { withRouter } from 'next/router'
 
-function MyLink({ router }) { 
+function MyLink({ router }) {
   return (
     <div>
       <a onClick={() => setTimeout(() => router.push('/dynamic'), 100)}>
@@ -837,7 +825,6 @@ export default withRouter(MyLink)
   </ul>
 </details>
 
-<p></p>
 
 Typically you start your next server with `next start`. It's possible, however, to start a server 100% programmatically in order to customize routes, use route patterns, etc.
 
@@ -967,7 +954,6 @@ app.prepare().then(() => {
   </ul>
 </details>
 
-<p></p>
 
 Next.js supports TC39 [dynamic import proposal](https://github.com/tc39/proposal-dynamic-import) for JavaScript.
 With that, you could import JavaScript modules (inc. React Components) dynamically and work with them.
@@ -992,7 +978,7 @@ function Home() {
       <p>HOME PAGE is here!</p>
     </div>
   )
-} 
+}
 
 export default Home
 ```
@@ -1082,7 +1068,6 @@ export default DynamicBundle
   </ul>
 </details>
 
-<p></p>
 
 Next.js uses the `App` component to initialize pages. You can override it and control the page initialization. Which allows you to do amazing things like:
 
@@ -1132,7 +1117,6 @@ export default MyApp
   </ul>
 </details>
 
-<p></p>
 
 - Is rendered on the server side
 - Is used to change the initial server side rendered document markup
@@ -1145,7 +1129,7 @@ Pages in `Next.js` skip the definition of the surrounding document's markup. For
 // Event handlers like onClick can't be added to this file
 
 // ./pages/_document.js
-import Document, { Head, Main, NextScript } from 'next/document'
+import Document, { Html, Head, Main, NextScript } from 'next/document'
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -1155,7 +1139,7 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <html>
+      <Html>
         <Head>
           <style>{`body { margin: 0 } /* custom! */`}</style>
         </Head>
@@ -1163,7 +1147,7 @@ class MyDocument extends Document {
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     )
   }
 }
@@ -1424,7 +1408,6 @@ next start --inspect
   </ul>
 </details>
 
-<p></p>
 
 Some commonly asked for features are available as modules:
 
@@ -1511,7 +1494,6 @@ module.exports = {
   </ul>
 </details>
 
-<p></p>
 
 In order to extend our usage of `babel`, you can simply define a `.babelrc` file at the root of your app. This file is optional.
 
@@ -1594,10 +1576,10 @@ export default Index
 
 > :warning: Note that this option is not available when using `target: 'serverless'`
 
-> :warning: Generally you want to use build-time configuration to provide your configuration. 
+> :warning: Generally you want to use build-time configuration to provide your configuration.
 The reason for this is that runtime configuration adds a small rendering / initialization overhead.
 
-The `next/config` module gives your app access to the `publicRuntimeConfig` and `serverRuntimeConfig` stored in your `next.config.js`. 
+The `next/config` module gives your app access to the `publicRuntimeConfig` and `serverRuntimeConfig` stored in your `next.config.js`.
 
 Place any server-only runtime config under a `serverRuntimeConfig` property.
 
@@ -1775,7 +1757,6 @@ The [polyfills](https://github.com/zeit/next.js/tree/canary/examples/with-polyfi
   </ul>
 </details>
 
-<p></p>
 
 `next export` is a way to run your Next.js app as a standalone static app without the need for a Node.js server.
 The exported app supports almost every feature of Next.js, including dynamic urls, prefetching, preloading and dynamic imports.
@@ -1903,7 +1884,6 @@ The `req` and `res` fields of the `context` object passed to `getInitialProps` a
   </ul>
 </details>
 
-<p></p>
 
 A zone is a single deployment of a Next.js app. Just like that, you can have multiple zones. Then you can merge them as a single app.
 
@@ -1956,7 +1936,6 @@ For the production deployment, you can use the [path alias](https://zeit.co/docs
   We’re ecstatic about both the developer experience and end-user performance, so we decided to share it with the community.
 </details>
 
-<p></p>
 
 <details>
   <summary>How big is it?</summary>
@@ -1966,7 +1945,6 @@ A small Next main bundle is around 65kb gzipped.
 
 </details>
 
-<p></p>
 
 <details>
   <summary>Is this like `create-react-app`?</summary>
@@ -1987,7 +1965,6 @@ If you want to create re-usable React components that you can embed in your Next
 
 </details>
 
-<p></p>
 
 <details>
   <summary>How do I use CSS-in-JS solutions?</summary>
@@ -1995,7 +1972,6 @@ If you want to create re-usable React components that you can embed in your Next
 Next.js bundles [styled-jsx](https://github.com/zeit/styled-jsx) supporting scoped css. However you can use any CSS-in-JS solution in your Next app by just including your favorite library [as mentioned before](#css-in-js) in the document.
 </details>
 
-<p></p>
 
 <details>
   <summary>What syntactic features are transpiled? How do I change them?</summary>
@@ -2006,7 +1982,6 @@ See the  documentation about [customizing the babel config](#customizing-babel-c
 
 </details>
 
-<p></p>
 
 <details>
   <summary>Why a new Router?</summary>
@@ -2022,11 +1997,8 @@ As a result, we were able to introduce a very simple approach to routing that co
 - Every top level component receives a `url` object to inspect the url or perform modifications to the history
 - A `<Link />` component is used to wrap elements like anchors (`<a/>`) to perform client-side transitions
 
-We tested the flexibility of the routing with some interesting scenarios. For an example, check out [nextgram](https://github.com/zeit/nextgram).
-
 </details>
 
-<p></p>
 
 <details>
 <summary>How do I define a custom fancy route?</summary>
@@ -2036,7 +2008,6 @@ We [added](#custom-server-and-routing) the ability to map between an arbitrary U
 On the client side, we have a parameter call `as` on `<Link>` that _decorates_ the URL differently from the URL it _fetches_.
 </details>
 
-<p></p>
 
 <details>
 <summary>How do I fetch data?</summary>
@@ -2044,7 +2015,6 @@ On the client side, we have a parameter call `as` on `<Link>` that _decorates_ t
 It’s up to you. `getInitialProps` is an `async` function (or a regular function that returns a `Promise`). It can retrieve data from anywhere.
 </details>
 
-<p></p>
 
 <details>
   <summary>Can I use it with GraphQL?</summary>
@@ -2053,7 +2023,6 @@ Yes! Here's an example with [Apollo](/examples/with-apollo).
 
 </details>
 
-<p></p>
 
 <details>
 <summary>Can I use it with Redux?</summary>
@@ -2061,7 +2030,6 @@ Yes! Here's an example with [Apollo](/examples/with-apollo).
 Yes! Here's an [example](/examples/with-redux)
 </details>
 
-<p></p>
 
 <details>
 <summary>Can I use Next with my favorite Javascript library or toolkit?</summary>
@@ -2069,7 +2037,6 @@ Yes! Here's an [example](/examples/with-redux)
 Since our first release we've had **many** example contributions, you can check them out in the [examples](/examples) directory
 </details>
 
-<p></p>
 
 <details>
 <summary>What is this inspired by?</summary>
@@ -2084,7 +2051,6 @@ As we were researching options for server-rendering React that didn’t involve 
 
 </details>
 
-<p></p>
 
 ## Contributing
 

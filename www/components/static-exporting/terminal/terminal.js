@@ -1,7 +1,7 @@
 import React from 'react';
 import { Keyframes, Frame } from 'react-keyframes';
 
-import Window from './window';
+import Window from '../../window';
 import Prompt from './prompt';
 import Caret from './caret';
 

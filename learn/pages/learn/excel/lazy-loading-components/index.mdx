@@ -1,0 +1,41 @@
+import Layout from '~/components/Layout'
+
+export const meta = {
+  title: 'Lazy Loading Components',
+  courseId: 'excel',
+  lessonId: 'lazy-loading-components'
+}
+
+We use a lot of React components in our applications. We include them in our main JavaScript bundle (`app.js`) or in one of the page's JavaScript bundles. Sometimes some of these components are pretty big.
+
+For example, this is a pretty simple blog site we built with Next.js based on markdown.
+
+![](https://user-images.githubusercontent.com/50838/28258427-ca01153c-6aee-11e7-8974-69ad7609ed2b.png)
+
+It also supports syntax highlighting. For that, we use [react-highlight](https://github.com/akiran/react-highlight), and it's a pretty big module.
+
+> Actually, the `react-highlight` module itself is very small but the [highlight.js](https://github.com/isagalaev/highlight.js/) module used inside that is bulky.
+
+Here's how we use it.
+
+```jsx
+import Highlight from 'react-highlight'
+
+// some other code
+;<div>
+  <Highlight innerHTML>{marked(blogPostMarkdown)}</Highlight>
+</div>
+
+// some other code
+```
+
+Since it's used in almost all of the pages, `react-highlight` is included in our main JavaScript bundle.
+
+But we don't need to use the syntax highlighter on every page. It's only needed when there's a code sample in the blog post.
+
+So, if we can load react-highlight only when needed, that will reduce the initial app bundle dramatically, and that will help our app load faster.
+
+This is something we can do with Next.js (since version 3.0).
+Let's get started.
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>

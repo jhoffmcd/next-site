@@ -45,15 +45,16 @@ export default class extends PureComponent {
           native
           keys={currentIndex}
           initial={null}
-          from={{ opacity: 0, y: -50 }}
-          enter={{ opacity: 1, y: 0 }}
-          leave={{ opacity: 0, y: 60 }}
+          from={{ opacity: 0, y: 25 }}
+          enter={{ opacity: 1, y: 75 }}
+          leave={{ opacity: 0, y: 135 }}
         >
           {({ opacity, y }) => (
             <animated.div
               style={{
                 position: 'absolute',
-                transform: y.interpolate(y => `translate3d(0, ${y}%, 0)`),
+                left: '50%',
+                transform: y.interpolate(y => `translate3d(-50%, ${y}%, 0)`),
                 opacity
               }}
             >
@@ -66,9 +67,7 @@ export default class extends PureComponent {
              {
               width: 100%;
               height: 3.4em;
-              display: flex;
-              align-items: center;
-              justify-content: center;
+              display: block;
               margin-top: 1rem;
               margin-bottom: 2rem;
             }

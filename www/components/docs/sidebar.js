@@ -2,19 +2,9 @@ import { PureComponent, Component } from 'react';
 import _scrollIntoViewIfNeeded from 'scroll-into-view-if-needed';
 import GithubSlugger from 'github-slugger';
 
-import Header from '../header';
+import HeaderLegacy from '../header-legacy';
 import Container from '../container';
 import ArrowRight from '../icons/arrow-right';
-
-function scrollIntoViewIfNeeded(elem) {
-  const finalElement = findClosestScrollableElement(elem);
-  return _scrollIntoViewIfNeeded(elem.parentElement, {
-    behavior: 'smooth',
-    scrollMode: 'if-needed',
-    block: 'center',
-    boundary: finalElement
-  });
-}
 
 function findClosestScrollableElement(_elem) {
   const { parentNode } = _elem;
@@ -25,9 +15,19 @@ function findClosestScrollableElement(_elem) {
     parentNode.scrollWidth > parentNode.clientWidth
   ) {
     return parentNode;
-  } else {
-    return findClosestScrollableElement(parentNode);
   }
+
+  return findClosestScrollableElement(parentNode);
+}
+
+function scrollIntoViewIfNeeded(elem) {
+  const finalElement = findClosestScrollableElement(elem);
+  return _scrollIntoViewIfNeeded(elem.parentElement, {
+    behavior: 'smooth',
+    scrollMode: 'if-needed',
+    block: 'center',
+    boundary: finalElement
+  });
 }
 
 function flattenHeadings(headings) {
@@ -41,6 +41,8 @@ function slugifyHeadings(headings) {
   const slugger = new GithubSlugger();
 
   return headings.map(heading => {
+    // n.b. mutation is required here unfortunately
+    // eslint-disable-next-line no-param-reassign
     heading.id = slugger.slug(heading.title);
     return heading;
   });
@@ -121,6 +123,8 @@ export class SidebarNavItem extends Component {
       case 6:
         listStyle = 'padding: 2px 3px 2px 45px; font-size: 13px; color: #666;';
         break;
+      default:
+        break;
     }
 
     return (
@@ -157,6 +161,8 @@ export class SidebarNavItem extends Component {
   }
 }
 
+// TODO: remove me
+// eslint-disable-next-line
 export class SidebarNavItemContainer extends Component {
   render() {
     const { headings, currentSelection, updateSelected, isMobile } = this.props;
@@ -193,16 +199,21 @@ export class SidebarNavItemContainer extends Component {
   }
 }
 
+// TODO: remove me
+// eslint-disable-next-line
 export default class Sidebar extends PureComponent {
   state = {
     dropdown: false
   };
+
   updateSelected = () => {
     this.setState({ dropdown: false });
   };
+
   toggleDropdown = () => {
     this.setState({ dropdown: !this.state.dropdown });
   };
+
   render() {
     let { isMobile, headings, currentSelection } = this.props;
     const { dropdown } = this.state;
@@ -218,11 +229,10 @@ export default class Sidebar extends PureComponent {
       return (
         <>
           <div className="negative-spacer">
-            <Header
+            <HeaderLegacy
               height={48}
               zIndex={999}
               offset={64 + 32}
-              distance={1}
               defaultActive
               shadow
             >
@@ -256,7 +266,7 @@ export default class Sidebar extends PureComponent {
                   </nav>
                 </Container>
               </div>
-            </Header>
+            </HeaderLegacy>
           </div>
           <style jsx>{`
             .docs-select {

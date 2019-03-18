@@ -1,0 +1,64 @@
+import Layout from '~/components/Layout'
+import AnswerBox from '~/components/AnswerBox'
+
+export const meta = {
+  title: 'Deploying a Next.js App',
+  courseId: 'basics',
+  lessonId: 'deploying-a-nextjs-app',
+  stepId: 'deploying-to-zeit-now',
+  question: {
+    answers: [
+      '8000',
+      '443 (or without a port mentioned)',
+      'Any port you mentioned in the URL',
+      "It will throw an error saying, 'You can only start your app on port 443'"
+    ],
+    correctAnswer: '443 (or without a port mentioned)'
+  }
+}
+
+## Deploying to ▲ZEIT Now
+
+Now we know how to build and start a Next.js app. We did everything with npm scripts. So, you will be able to customize it to work with your favorite deployment service.
+
+Using [▲ZEIT Now](https://zeit.co/now), add the following scripts to the package.json file:
+
+```js
+"scripts": {
+  "build": "next build",
+  "now-build": "next build"
+}
+```
+
+Next, create a next.config.js file in the root of the project and specify target as 'serverless':
+
+```js
+module.exports = {
+  target: 'serverless'
+}
+```
+
+Then, create a now.json file in the root of your project with the following contents:
+
+```json
+{
+  "version": 2,
+  "builds": [{ "src": "package.json", "use": "@now/next" }]
+}
+```
+
+> The [@now/next Builder](https://zeit.co/docs/v2/deployments/official-builders/next-js-now-next) will convert pages of our app into a series of individual [lambdas](https://zeit.co/docs/v2/deployments/concepts/lambdas/). Read the [Create a Next.js Application and Deploy with Now](https://zeit.co/guides/deploying-nextjs-with-now/) guide for additional information.
+
+Finally, [install Now](https://zeit.co/now) and run the following command:
+
+```
+now
+```
+
+> Basically, you run the “now” command from your terminal inside your app's root directory.
+
+Here, we mentioned port 8000 as the port in which we start our app. But we didn't change it when deploying to ZEIT Now.
+
+So, in which port could we access our app when deployed to ZEIT Now?
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>

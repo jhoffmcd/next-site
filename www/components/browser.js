@@ -1,6 +1,6 @@
-import { ellipsis } from 'polished'
+import { ellipsis } from 'polished';
 
-import Tabs from './tabs'
+import Tabs from './tabs';
 
 export default ({ data, height = '352px' }) => (
   <div className="browser">
@@ -77,12 +77,12 @@ export default ({ data, height = '352px' }) => (
           </div>
           <div className="content">
             {(() => {
-              let SelectedTab = data.browserMapping[selectedTab]
-              return <SelectedTab onSelect={onSelect} />
+              const SelectedTab = data.browserMapping[selectedTab];
+              return <SelectedTab onSelect={onSelect} />;
             })()}
           </div>
         </>
       )}
     </Tabs>
   </div>
-)
+);

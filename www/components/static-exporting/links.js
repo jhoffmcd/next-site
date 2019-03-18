@@ -2,10 +2,7 @@ import React from 'react';
 
 import Container from '../container';
 import SectionHeader from '../section-header';
-import Globe from './globe';
 import Button from '../button';
-
-import { MediaQueryConsumer } from '../media-query';
 
 export default class Links extends React.PureComponent {
   render() {
@@ -47,22 +44,11 @@ export default class Links extends React.PureComponent {
             </div>
           </div>
         </Container>
-        <div className="globe-container">
-          <MediaQueryConsumer>
-            {({ isMobile }) => <Globe key={isMobile} isMobile={isMobile} />}
-          </MediaQueryConsumer>
-        </div>
         <style jsx>
           {`
             .flex {
               display: flex;
-              margin: 0 -1.5rem;
-            }
-
-            .globe-container {
-              width: 100%;
-              height: 200px;
-              overflow: hidden;
+              margin: 0 -1.5rem 1rem;
             }
 
             @media screen and (max-width: 960px) {
@@ -85,10 +71,6 @@ export default class Links extends React.PureComponent {
             @media screen and (max-width: 640px) {
               .earth-img {
                 height: 180px;
-              }
-
-              .globe-container {
-                display: none;
               }
             }
           `}

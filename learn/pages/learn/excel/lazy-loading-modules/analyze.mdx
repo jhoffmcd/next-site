@@ -1,0 +1,38 @@
+import Layout from '~/components/Layout'
+import AnswerBox from '~/components/AnswerBox'
+
+export const meta = {
+  title: 'Lazy Loading Modules',
+  courseId: 'excel',
+  lessonId: 'lazy-loading-modules',
+  stepId: 'analyze',
+  question: {
+    answers: [
+      'inside commons.js bundle',
+      'inside main.js bundle',
+      'inside pages/index.js bundle',
+      'in all pages'
+    ],
+    correctAnswer: 'inside commons.js bundle'
+  }
+}
+
+## Analyze
+
+The app will look like this and it is a pretty basic one:
+
+![](https://user-images.githubusercontent.com/50838/28233925-2ff5dacc-6918-11e7-935c-61cd5df2d0f0.png)
+
+Now, let's try to understand what is inside our app bundle.
+
+For that, simply run the following command:
+
+```bash
+npm run analyze
+```
+
+Then, it will start a [webpack bundle analyzer](https://github.com/th0r/webpack-bundle-analyzer) and you will be able to inspect what is inside each of the JavaScript bundles.
+
+So, the `firebase` module is contained:
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>

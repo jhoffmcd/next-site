@@ -1,3 +1,4 @@
+/* global window */
 import React from 'react';
 import classNames from 'classnames';
 import Link from 'next/link';
@@ -7,22 +8,17 @@ import Container from '../container';
 import Button from '../button';
 import Popover from '../popover';
 import Campaign from './campaign';
-import { MediaQueryConsumer } from '../media-query';
 
 import { links } from '../../site-manifest';
 
 function easing(t) {
+  // eslint-disable-next-line
   return 1 + --t * t * t * t * t;
 }
 
 class LogoContainer extends React.PureComponent {
   state = {
     scroll: 0
-  };
-
-  onScroll = () => {
-    const scroll = window.scrollY || document.body.scrollTop;
-    this.setState({ scroll });
   };
 
   componentDidMount() {
@@ -35,88 +31,98 @@ class LogoContainer extends React.PureComponent {
     window.removeEventListener('scroll', this.onScroll);
   }
 
+  onScroll = () => {
+    const scroll = window.scrollY || window.document.body.scrollTop;
+    this.setState({ scroll });
+  };
+
   render() {
     const { scroll, mounted } = this.state;
 
+    // const LOGO_TOP = isMobile ? 126 : 170;
+    const LOGO_TOP = 170;
     return (
-      <MediaQueryConsumer>
-        {({ isMobile }) => {
-          const LOGO_TOP = isMobile ? 126 : 170;
-          return (
-            <div
-              className="logo-main f4 fw6"
-              style={{
-                top: Math.max(LOGO_TOP - scroll, 7),
-                willChange: `transform`,
-                transform: `scale(${Math.max(easing(1 - scroll / LOGO_TOP), 0) * 0.325 +
-                  0.625}) translate3d(0, 0, 0)`,
-                transformOrigin: 'top',
-                display: mounted ? 'flex' : 'none'
-              }}
-            >
-              <Link href={scroll >= LOGO_TOP ? '/' : undefined}>
-                <a aria-label="Next.js">
-                  <Logo size={80} />
-                </a>
-              </Link>
-              <Link href="/blog/next-8">
-                <a
-                  className="version no-tap-highlight no-drag"
-                  style={{
-                    opacity: Math.max(1 - (scroll * 3) / LOGO_TOP, 0),
-                    visibility: scroll * 3 > LOGO_TOP ? 'hidden' : 'visible'
-                  }}
-                >
-                  <Popover
-                    content={
-                      <span className="f5 fw4 tip">
-                        What’s new in <strong className="fw7">8</strong>?
-                      </span>
-                    }
-                    top={65}
-                  >
-                    8
-                  </Popover>
-                </a>
-              </Link>
-              <style jsx>{`
-                .logo-main {
-                  position: fixed;
-                  justify-content: center;
-                  color: #0076ff;
-                  left: 0;
-                  right: 0;
-                  width: 200px;
-                  margin: auto;
-                  z-index: 1000;
-                }
-                .logo-main .version {
-                  width: 0;
-                  // margin-left: -0.2rem;
-                  margin-top: 0.4rem;
-                  cursor: pointer;
-                }
-                .version.hide {
-                  opacity: 0;
-                }
-                a.version {
-                  color: #0076ff;
-                }
-                .version .tip {
-                  color: #111;
-                  white-space: nowrap;
-                }
-                // CSS only media query for mobile
-                @media screen and (max-width: 640px) {
-                  .logo-main {
-                    display: none;
-                  }
-                }
-              `}</style>
-            </div>
-          );
+      <div
+        className={classNames('logo-main f4 fw6', { unmounted: !mounted })}
+        style={{
+          top: Math.max(LOGO_TOP - scroll, 7),
+          willChange: `transform`,
+          transform: `scale(${Math.max(easing(1 - scroll / LOGO_TOP), 0) *
+            0.325 +
+            0.625}) translate3d(0, 0, 0)`,
+          transformOrigin: 'top'
         }}
-      </MediaQueryConsumer>
+      >
+        <Link href="/">
+          <a
+            className={scroll >= LOGO_TOP ? null : 'disable'}
+            aria-label="Next.js"
+          >
+            <Logo size={80} />
+          </a>
+        </Link>
+        <Link href="/blog/next-8">
+          <a
+            className="version no-tap-highlight no-drag"
+            style={{
+              opacity: Math.max(1 - (scroll * 3) / LOGO_TOP, 0),
+              visibility: scroll * 3 > LOGO_TOP ? 'hidden' : 'visible'
+            }}
+          >
+            <Popover
+              content={
+                <span className="f5 fw4 tip">
+                  What’s new in <strong className="fw7">8</strong>?
+                </span>
+              }
+              top={65}
+            >
+              8
+            </Popover>
+          </a>
+        </Link>
+        <style jsx>{`
+          .disable {
+            pointer-events: none;
+          }
+          .logo-main {
+            display: flex;
+            position: fixed;
+            justify-content: center;
+            color: #0076ff;
+            left: 0;
+            right: 0;
+            width: 200px;
+            margin: auto;
+            z-index: 1000;
+          }
+          .logo-main .version {
+            width: 0;
+            // margin-left: -0.2rem;
+            margin-top: 0.4rem;
+            cursor: pointer;
+          }
+          .version.hide {
+            opacity: 0;
+          }
+          a.version {
+            color: #0076ff;
+          }
+          .version .tip {
+            color: #111;
+            white-space: nowrap;
+          }
+          .unmounted {
+            display: none;
+          }
+          // CSS only media query for mobile
+          @media screen and (max-width: 640px) {
+            .logo-main {
+              display: none;
+            }
+          }
+        `}</style>
+      </div>
     );
   }
 }
@@ -211,7 +217,9 @@ export default class extends React.PureComponent {
             `}</style>
             <LogoContainer />
             <div className="campaign no-drag no-tap-highlight">
-              <h1 className={classNames('title-1', 'fw6')}>The React Framework for</h1>
+              <h1 className={classNames('title-1', 'fw6')}>
+                The React Framework for
+              </h1>
               <h2 className={classNames('title-2', 'fw7')}>
                 <Campaign />
               </h2>

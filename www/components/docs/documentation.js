@@ -1,6 +1,5 @@
+/* global window */
 import { Component } from 'react';
-import Router from 'next/router';
-import { format, parse } from 'url';
 import Head from './head';
 import Sidebar from './sidebar';
 import { H1, H2, H3, H4, H5 } from './text/headings';
@@ -12,20 +11,8 @@ import Heading from './heading';
 import { MediaQueryConsumer } from '../media-query';
 
 if (typeof window !== 'undefined') {
+  // eslint-disable-next-line global-require
   require('intersection-observer');
-}
-
-function changeHash(hash) {
-  const { pathname, query } = Router;
-
-  const parsedUrl = parse(location.href);
-  parsedUrl.hash = hash;
-
-  Router.router.changeState(
-    'replaceState',
-    format({ pathname, query }),
-    format(parsedUrl)
-  );
 }
 
 export default class Documentation extends Component {
@@ -37,9 +24,6 @@ export default class Documentation extends Component {
     this.contentNode = null;
     this.observer = null;
     this.preventScrollObserverUpdate = false;
-
-    this.updateSelected = this.updateSelected.bind(this);
-    this.onHashChange = this.onHashChange.bind(this);
   }
 
   componentDidMount() {
@@ -48,14 +32,14 @@ export default class Documentation extends Component {
     const nodes = [...this.contentNode.querySelectorAll('h3 [id], h4 [id]')];
     const intersectingTargets = new Set();
 
-    this.observer = new IntersectionObserver(entries => {
-      for (const { isIntersecting, target } of entries) {
+    this.observer = new window.IntersectionObserver(entries => {
+      entries.forEach(({ isIntersecting, target }) => {
         if (isIntersecting) {
           intersectingTargets.add(target);
         } else {
           intersectingTargets.delete(target);
         }
-      }
+      });
 
       if (this.preventScrollObserverUpdate) {
         this.preventScrollObserverUpdate = false;
@@ -66,21 +50,21 @@ export default class Documentation extends Component {
       let minIndex = Infinity;
       let id = '';
 
-      for (let target of intersectingTargets.values()) {
-        let index = nodes.indexOf(target);
+      // eslint-disable-next-line no-restricted-syntax
+      for (const target of intersectingTargets.values()) {
+        const index = nodes.indexOf(target);
         if (index < minIndex) {
           minIndex = index;
+          // eslint-disable-next-line prefer-destructuring
           id = target.id;
         }
       }
 
-      const hash = '#' + (id || '');
+      const hash = `#${id || ''}`;
       this.updateSelected(hash);
     });
 
-    for (const node of nodes) {
-      this.observer.observe(node);
-    }
+    nodes.forEach(node => this.observer.observe(node));
 
     const { hash } = window.location;
     this.setState({ currentSelection: hash });
@@ -94,24 +78,26 @@ export default class Documentation extends Component {
   }
 
   updateSelected = hash => {
-    if (this.state.currentSelection !== hash) {
+    const { currentSelection } = this.state;
+    if (currentSelection !== hash) {
       this.setState({
         currentSelection: hash
       });
     }
   };
 
-  onHashChange() {
+  onHashChange = () => {
     this.preventScrollObserverUpdate = true;
     this.updateSelected(window.location.hash);
-  }
+  };
 
   render() {
-    const { headings } = this.props;
+    const { headings, children } = this.props;
+    const { currentSelection } = this.state;
 
     return (
       <MediaQueryConsumer>
-        {({ isMobile, isTablet }) => {
+        {({ isMobile }) => {
           return (
             <>
               <Head title="Getting Started" />
@@ -119,7 +105,7 @@ export default class Documentation extends Component {
               <div className="documentation">
                 <Sidebar
                   updateSelected={this.updateSelected}
-                  currentSelection={this.state.currentSelection}
+                  currentSelection={currentSelection}
                   isMobile={isMobile}
                   headings={headings}
                 />
@@ -127,15 +113,21 @@ export default class Documentation extends Component {
                 <div className="documentation__container">
                   <div
                     className="documentation__content"
+                    // eslint-disable-next-line no-return-assign
                     ref={ref => (this.contentNode = ref)}
                   >
-                    {this.props.children}
+                    {children}
                   </div>
                 </div>
 
                 <style jsx>{`
                   .documentation {
-                    display: ${isMobile ? 'block' : 'flex'};
+                    display: flex;
+                  }
+                  @media screen and (max-width: 640px) {
+                    .documentation {
+                      display: block;
+                    }
                   }
 
                   .documentation__sidebar {
@@ -156,13 +148,6 @@ export default class Documentation extends Component {
                   .documentation__content {
                     width: 100%;
                     max-width: 600px;
-                  }
-
-                  // CSS only media query for mobile + SSR
-                  @media screen and (max-width: 640px) {
-                    .documentation {
-                      ${isMobile ? `` : `flex-direction: column;`};
-                    }
                   }
                 `}</style>
               </div>
@@ -212,12 +197,14 @@ const Details = ({ children }) => {
   return (
     <details>
       {children}
-      <style jsx>{`
-        margin: 1rem 0;
-        padding: 0 0.5rem;
-        background: #f9f9f9;
-        overflow: hidden;
-      `}</style>
+      <style jsx>
+        {`
+          margin: 1rem 0;
+          padding: 0 0.5rem;
+          background: #f9f9f9;
+          overflow: hidden;
+        `}
+      </style>
     </details>
   );
 };

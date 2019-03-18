@@ -8,18 +8,38 @@ export default class MyDocument extends Document {
       <html lang="en">
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-          <meta name="description" content="Production grade React applications that scale. The world’s leading companies use Next.js to build server-rendered applications, static websites, and more." />
+          <meta httpEquiv="content-type" content="text/html;charset=UTF-8" />
+          <meta
+            name="description"
+            content="Production grade React applications that scale. The world’s leading companies use Next.js to build server-rendered applications, static websites, and more."
+          />
           <meta name="twitter:site" content="@zeithq" />
-          <meta name="og:title" content='Learn | Next.js' />
-          <meta name="og:url" content='https://nextjs.org/learn' />
-          <meta name="og:description" content='Production grade React applications that scale. The world’s leading companies use Next.js to build server-rendered applications, static websites, and more.' />
+          <meta name="og:title" content="Learn | Next.js" />
+          <meta name="og:url" content="https://nextjs.org/learn" />
+          <meta
+            name="og:description"
+            content="Production grade React applications that scale. The world’s leading companies use Next.js to build server-rendered applications, static websites, and more."
+          />
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="og:image" content='https://nextjs.org/static/twitter-cards/learn.png' />
+          <meta name="og:image" content="https://nextjs.org/static/twitter-cards/learn.png" />
 
-          <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png" />
-          <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png" />
-          <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png" />
+          <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/static/favicon/apple-touch-icon.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/static/favicon/favicon-32x32.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/static/favicon/favicon-16x16.png"
+          />
           <link rel="manifest" href="/static/favicon/site.webmanifest" />
           <link rel="mask-icon" href="/static/favicon/safari-pinned-tab.svg" color="#000000" />
           <link rel="shortcut icon" href="/static/favicon/favicon.ico" />
@@ -30,10 +50,7 @@ export default class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
-          <script
-            async
-            src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
-          />
+          <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`} />
           <script
             dangerouslySetInnerHTML={{
               __html: `

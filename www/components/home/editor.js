@@ -43,6 +43,7 @@ export default ({ data, children }) => {
         flex: 1;
         white-space: nowrap;
         overflow-x: auto;
+        overflow-y: hidden;
         -webkit-overflow-scrolling: touch;
       }
       .tab {

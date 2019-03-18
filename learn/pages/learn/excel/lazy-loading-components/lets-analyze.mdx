@@ -1,0 +1,27 @@
+import Layout from '~/components/Layout'
+import AnswerBox from '~/components/AnswerBox'
+
+export const meta = {
+  title: 'Lazy Loading Components',
+  courseId: 'excel',
+  lessonId: 'lazy-loading-components',
+  stepId: 'lets-analyze',
+  question: {
+    answers: ['main.js', 'commons.js', 'app.js', 'pages/post.js'],
+    correctAnswer: 'commons.js'
+  }
+}
+
+## Let's Analyze
+
+Before we do anything else, let's analyze our app's JavaScript bundles.
+For that, simply run the following command:
+
+```sh
+npm run analyze
+```
+
+After the command completes, you can see the results in the web browser.
+What is the bundle where the `highlight.js` module exists?
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>
