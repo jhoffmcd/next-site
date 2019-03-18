@@ -12,11 +12,13 @@ export const meta = {
 If you remove `{props.children}`, the Layout cannot render the content we put inside the `Layout` element, as shown below:
 
 ```js
-export default () => (
-  <Layout>
-    <p>This is the about page</p>
-  </Layout>
-)
+export default function About() {
+  return (
+    <Layout>
+      <p>This is the about page</p>
+    </Layout>
+  )
+}
 ```
 
 This is just one way to create a Layout component. Here are some other methods of creating a Layout component:
@@ -30,15 +32,19 @@ export default withLayout(Page)
 ```
 
 ```js
-const Page = () => <p>This is the about page</p>
+const AboutPageContent = () => <p>This is the about page</p>
 
-export default () => <Layout page={Page} />
+export default function About() {
+  return <Layout page={AboutPageContent} />
+}
 ```
 
 ```js
-const content = <p>This is the about page</p>
+const aboutPageContent = <p>This is the about page</p>
 
-export default () => <Layout content={content} />
+export default function About() {
+  return <Layout content={aboutPageContent} />
+}
 ```
 
 export default ({ children }) => <Layout meta={meta}>{children}</Layout>

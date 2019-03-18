@@ -9,11 +9,13 @@ export const meta = {
 Now we know how to create a simple Next.js app and run it. Our simple app only had a single page, but we can add as many pages as we want. For example, we can create an "About" page by adding the following content to `pages/about.js`:
 
 ```js
-export default () => (
-  <div>
-    <p>This is the about page</p>
-  </div>
-)
+export default function About() {
+  return (
+    <div>
+      <p>This is the about page</p>
+    </div>
+  )
+}
 ```
 
 Then we can access that page with http://localhost:3000/about.

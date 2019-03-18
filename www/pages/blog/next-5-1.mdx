@@ -70,9 +70,13 @@ const {serverRuntimeConfig, publicRuntimeConfig} = getConfig()
 console.log(serverRuntimeConfig.mySecret) // Will only be available on the server side
 console.log(publicRuntimeConfig.staticFolder) // Will be available on both server and client
 
-export default () => <div>
-  <img src={`${publicRuntimeConfig.staticFolder}/logo.png`} />
-</div>
+export default function Home() {
+  return (
+    <div>
+      <img src={`${publicRuntimeConfig.staticFolder}/logo.png`} />
+    </div>
+  )
+}
 ```
 <Caption>The <Caption.Code>getConfig</Caption.Code> method from the <Caption.Code>next/config</Caption.Code> module is used to get configuration values</Caption>
 
@@ -90,7 +94,7 @@ In addition to this, we've added a new set of [integration tests](https://github
 
 ## Phases / config function
 
-Some [next-plugins](https://github.com/zeit/next-plugins) like [`@zeit/next-css`](https://github.com/zeit/next-plugins/tree/master/packages/next-css) are only required when Next.js is in development mode or when running `next build`. 
+Some [next-plugins](https://github.com/zeit/next-plugins) like [`@zeit/next-css`](https://github.com/zeit/next-plugins/tree/master/packages/next-css) are only required when Next.js is in development mode or when running `next build`.
 
 You can now export a function that returns the configuration object instead of immediately exporting the object.
 
@@ -160,8 +164,8 @@ Additionally there were a lot of improvements to the official [`css`](https://gi
 
 ## Spectrum
 
-You can now find the Next.js community on [spectrum.chat](https://spectrum.chat/next-js). 
-Recently a list of [notable companies using Next.js](https://spectrum.chat/next-js?thread=e425a8b6-c9cb-4cd1-90bb-740fb3bd7541) was posted there. Feel free to post projects in the thread. 
+You can now find the Next.js community on [spectrum.chat](https://spectrum.chat/next-js).
+Recently a list of [notable companies using Next.js](https://spectrum.chat/next-js?thread=e425a8b6-c9cb-4cd1-90bb-740fb3bd7541) was posted there. Feel free to post projects in the thread.
 
 The slack channel is still available [here](/chat).
 

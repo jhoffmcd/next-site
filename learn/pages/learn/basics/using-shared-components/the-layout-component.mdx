@@ -49,11 +49,13 @@ Once we've done that, we can use this Layout in our pages as follows:
 
 import Layout from '../components/MyLayout.js'
 
-export default () => (
-  <Layout>
-    <p>Hello Next.js</p>
-  </Layout>
-)
+export default function Home() {
+  return (
+    <Layout>
+      <p>Hello Next.js</p>
+    </Layout>
+  )
+}
 ```
 
 ```js
@@ -61,11 +63,13 @@ export default () => (
 
 import Layout from '../components/MyLayout.js'
 
-export default () => (
-  <Layout>
-    <p>This is the about page</p>
-  </Layout>
-)
+export default function About() {
+  return (
+    <Layout>
+      <p>This is the about page</p>
+    </Layout>
+  )
+}
 ```
 
 Remember, you can access the app at http://localhost:3000/ to see what it looks like.

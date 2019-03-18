@@ -24,12 +24,14 @@ Next, let's import this component and use it in our pages. For the `index.js` pa
 ```js
 import Header from '../components/Header'
 
-export default () => (
-  <div>
-    <Header />
-    <p>Hello Next.js</p>
-  </div>
-)
+export default function Home() {
+  return (
+    <div>
+      <Header />
+      <p>Hello Next.js</p>
+    </div>
+  )
+}
 ```
 
 You can do the same for the about.js page as well.

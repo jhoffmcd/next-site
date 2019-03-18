@@ -132,16 +132,25 @@ The new version of these Next.js plugins **solves 20 existing issues related to 
 ```jsx
 // components/my-dynamic-component.js
 import './my-dynamic-component.css'
-export default () => <h1>My dynamic component</h1>
+
+export default function MyDynamicComponent() {
+  return <h1>My dynamic component</h1>
+}
 ```
 
 ```jsx
 // pages/index.js
 import dynamic from 'next/dynamic'
+
 const MyDynamicComponent = dynamic(import('../components/my-dynamic-component'))
-export default () => <div>
-  <MyDynamicComponent/>
-</div>
+
+export default function Home() {
+  return () {
+    <div>
+      <MyDynamicComponent/>
+    </div>
+  }
+}
 ```
 
 A major improvement is that you are no longer required to add the following to `pages/_document.js`:
@@ -183,11 +192,15 @@ This change is fully backwards-compatible as well. Making use of a dynamic compo
 
 ```jsx
 import dynamic from 'next/dynamic'
+
 const MyComponent = dynamic(import('../components/my-component'))
-export default () => {
-  return <div>
-    <MyComponent />
-  </div>
+
+export default function Home() {
+  return (
+    <div>
+      <MyComponent />
+    </div>
+  )
 }
 ```
 
@@ -329,12 +342,16 @@ const ChildComponent = () => <div>
   <p>some text</p>
 </div>
 
-export default () => <div>
-  <ChildComponent />
-  <style jsx>{`
-    p { color: black }
-  `}</style>
-</div>
+export default function Home() {
+  return (
+    <div>
+      <ChildComponent />
+      <style jsx>{`
+        p { color: black }
+      `}</style>
+    </div>
+  )
+}
 ```
 
 The above code tries to select the `p` tag does not work because styled-jsx styles are scoped to the current component, they do not leak into child components. One way to get around this was using the `:global` method, removing the prefix from the `p` tag. However, this introduces a new issue, which is that styles do leak across the page.
@@ -351,10 +368,14 @@ const ChildComponent = ({className}) => <div>
 
 const { className, styles } = css.resolve`p { color: black }`
 
-export default () => <div>
-  <ChildComponent className={className} />
-  {styles}
-</div>
+export default function Home() {
+  return (
+    <div>
+      <ChildComponent className={className} />
+      {styles}
+    </div>
+  )
+}
 ```
 
 This new API allows for transparently passing through custom styling to child components.

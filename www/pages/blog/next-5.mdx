@@ -93,11 +93,14 @@ import CSS files and take advantage of Webpack loaders:
 
 ```js
 import './index.css'
-export default () => (
-  <div>
-    <p>I love CSS!</p>
-  </div>
-)
+
+export default function Home() {
+  return (
+    <div>
+      <p>I love CSS!</p>
+    </div>
+  )
+}
 ```
 <Caption>An example page (<Caption.Code>pages/index.js</Caption.Code>) using CSS imports thanks to Universal Webpack</Caption>
 
