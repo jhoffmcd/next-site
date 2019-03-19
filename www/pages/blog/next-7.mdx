@@ -144,7 +144,7 @@ import dynamic from 'next/dynamic'
 
 const MyDynamicComponent = dynamic(import('../components/my-dynamic-component'))
 
-export default function Home() {
+export default function Index() {
   return () {
     <div>
       <MyDynamicComponent/>
@@ -195,7 +195,7 @@ import dynamic from 'next/dynamic'
 
 const MyComponent = dynamic(import('../components/my-component'))
 
-export default function Home() {
+export default function Index() {
   return (
     <div>
       <MyComponent />
@@ -342,7 +342,7 @@ const ChildComponent = () => <div>
   <p>some text</p>
 </div>
 
-export default function Home() {
+export default function Index() {
   return (
     <div>
       <ChildComponent />
@@ -368,7 +368,7 @@ const ChildComponent = ({className}) => <div>
 
 const { className, styles } = css.resolve`p { color: black }`
 
-export default function Home() {
+export default function Index() {
   return (
     <div>
       <ChildComponent className={className} />

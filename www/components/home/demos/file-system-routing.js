@@ -4,7 +4,7 @@ import withFrame from './frame'
 const IndexFile = () => <Code>{
   `import Link from 'next/link'
 
-export default function Home() {
+export default function Index() {
   return (
     <div>
       <h1>Hello Next.js 👋</h1>

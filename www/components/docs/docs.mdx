@@ -25,7 +25,7 @@ After that, the file-system is the main API. Every `.js` file becomes a route th
 Populate `./pages/index.js` inside your project:
 
 ```jsx
-function Home() {
+function Index() {
   return <div>Welcome to next.js!</div>
 }
 
@@ -316,7 +316,7 @@ Consider these two pages:
 // pages/index.js
 import Link from 'next/link'
 
-function Home() {
+function Index() {
   return (
     <div>
       Click{' '}
@@ -404,7 +404,7 @@ The component `<Link>` can also receive an URL object and it will automatically 
 // pages/index.js
 import Link from 'next/link'
 
-function Home() {
+function Index() {
   return (
     <div>
       Click{' '}
@@ -429,7 +429,7 @@ The default behaviour for the `<Link>` component is to `push` a new url into the
 // pages/index.js
 import Link from 'next/link'
 
-function Home() {
+function Index() {
   return (
     <div>
       Click{' '}
@@ -452,7 +452,7 @@ export default Home
 // pages/index.js
 import Link from 'next/link'
 
-function Home() {
+function Index() {
   return (
     <div>
       Click{' '}
@@ -970,7 +970,7 @@ import dynamic from 'next/dynamic'
 
 const DynamicComponent = dynamic(() => import('../components/hello'))
 
-function Home() {
+function Index() {
   return (
     <div>
       <Header />
@@ -992,7 +992,7 @@ const DynamicComponentWithCustomLoading = dynamic(() => import('../components/he
   loading: () => <p>...</p>
 })
 
-function Home() {
+function Index() {
   return (
     <div>
       <Header />
@@ -1014,7 +1014,7 @@ const DynamicComponentWithNoSSR = dynamic(() => import('../components/hello3'), 
   ssr: false
 })
 
-function Home() {
+function Index() {
   return (
     <div>
       <Header />
